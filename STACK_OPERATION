@@ -1,0 +1,90 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#define max 5
+int st[max],top=-1;
+void push(int st[],int val);
+int pop(int st[]);
+int peek(int st[]);
+void display(int st[]);
+int main()
+{
+	int val,option;
+	do{
+		printf("1. push");
+		printf("2. pop");
+		printf("3. peek");
+		printf("4. display");
+		printf("5. exit");
+		scanf("%d",&option);
+		switch(option)
+		{
+			case 1: printf("Enter the number to be pushed on the stack");
+			        scanf("%d",&val);
+			        push(st,val);
+			        break;
+			case 2:val=pop(st);
+			        break;
+			case 3:val=peek(st);
+			        break;
+			case 4:display(st);
+			        break;
+		}
+	}while(option!=5);
+	return 0;
+}
+void push(int st[],int val)
+{
+	if(top==max-1)
+	{
+		printf("stack overflow");
+	}
+	else
+	{
+		top++;
+		st[top]=val;
+	}
+}
+int pop(int st[])
+{
+	int val;
+	if(top==-1)
+	{
+		printf("stack underflow");
+		return -1;
+	}
+	else
+	{
+		val=st[top];
+		top=top-1;
+		return val;
+	}
+}
+void display(int st[])
+{
+	int i;
+	if(top==-1)
+	{
+		printf("stack empty");
+	}
+	else
+	{
+		for(i=top;i>=0;i--)
+		{
+			printf("%d",st[i]);
+			printf("\n");
+		}
+	}
+	
+}
+int peek(int st[])
+{
+	if(top==-1)
+	{
+		printf("stack is empty");
+		return -1;
+	}
+	else
+	return(st[top]);
+	
+}
